@@ -9,6 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	//sourceCompatibility = '11'
+	// Indicamos la versión de Java de esta manera para que sea compatible con la versión de Gradle que utiliza el contenedor de CircleCI
 	sourceCompatibility = JavaVersion.VERSION_11
 }
 
