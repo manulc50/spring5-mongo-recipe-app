@@ -8,7 +8,8 @@ group = 'com.mlorenzo'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '11'
+	//sourceCompatibility = '11'
+	sourceCompatibility = JavaVersion.VERSION_11
 }
 
 repositories {
