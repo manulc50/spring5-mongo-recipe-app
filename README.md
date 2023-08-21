@@ -1,1 +1,3 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/manulc50/spring5-mongo-recipe-app/tree/main.svg?style=svg&circle-token=649aa6cf0c50c438a7a91e8f09c5a05d2241fe41)](https://dl.circleci.com/status-badge/redirect/gh/manulc50/spring5-mongo-recipe-app/tree/main)
+
+[![codecov](https://codecov.io/gh/manulc50/spring5-mongo-recipe-app/graph/badge.svg?token=0114PC5JYD)](https://codecov.io/gh/manulc50/spring5-mongo-recipe-app)
