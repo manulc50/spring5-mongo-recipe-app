@@ -2,9 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.3.3.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'jacoco'
 }
-
-apply plugin: 'jacoco'
 
 group = 'com.mlorenzo'
 version = '0.0.1-SNAPSHOT'
@@ -38,4 +37,12 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// Export test coverage
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
 }
