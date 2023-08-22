@@ -1,7 +1,7 @@
 package com.mlorenzo.spring5mongorecipeapp.services;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -17,7 +17,7 @@ import com.mlorenzo.spring5mongorecipeapp.repositories.UnitOfMeasureRepository;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -39,7 +39,7 @@ public class IngredientServiceImplTest {
         this.ingredientCommandToIngredient = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     }
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, ingredientCommandToIngredient,
@@ -72,7 +72,6 @@ public class IngredientServiceImplTest {
         assertEquals("3", ingredientCommand.getId());
         verify(recipeRepository, times(1)).findById(anyString());
     }
-
 
     @Test
     public void testSaveRecipeCommand() throws Exception {

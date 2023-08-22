@@ -1,14 +1,14 @@
 package com.mlorenzo.spring5mongorecipeapp.domain;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
 public class CategoryTest {
     Category category;
 
-    @BeforeEach
+    @Before
     public void setUp(){
         category = new Category();
     }

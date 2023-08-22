@@ -1,7 +1,7 @@
 package com.mlorenzo.spring5mongorecipeapp.services;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -13,7 +13,7 @@ import com.mlorenzo.spring5mongorecipeapp.repositories.RecipeRepository;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class ImageServiceImplTest {
@@ -23,7 +23,7 @@ public class ImageServiceImplTest {
 
     ImageService imageService;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         imageService = new ImageServiceImpl(recipeRepository);

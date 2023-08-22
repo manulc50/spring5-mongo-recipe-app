@@ -1,9 +1,8 @@
 package com.mlorenzo.spring5mongorecipeapp.services;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mlorenzo.spring5mongorecipeapp.commands.RecipeCommand;
@@ -12,9 +11,14 @@ import com.mlorenzo.spring5mongorecipeapp.converters.RecipeToRecipeCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.Recipe;
 import com.mlorenzo.spring5mongorecipeapp.repositories.RecipeRepository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-@Disabled
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@Ignore
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class RecipeServiceIT {
     public static final String NEW_DESCRIPTION = "New Description";

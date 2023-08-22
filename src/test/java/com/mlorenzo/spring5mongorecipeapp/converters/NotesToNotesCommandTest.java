@@ -1,12 +1,12 @@
 package com.mlorenzo.spring5mongorecipeapp.converters;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.mlorenzo.spring5mongorecipeapp.commands.NotesCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.Notes;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class NotesToNotesCommandTest {
     public static final String ID_VALUE = "1";
@@ -14,7 +14,7 @@ public class NotesToNotesCommandTest {
     
     NotesToNotesCommand converter;
     
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         converter = new NotesToNotesCommand();
     }

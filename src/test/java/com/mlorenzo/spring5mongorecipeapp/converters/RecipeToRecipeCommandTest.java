@@ -1,12 +1,12 @@
 package com.mlorenzo.spring5mongorecipeapp.converters;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.mlorenzo.spring5mongorecipeapp.commands.RecipeCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class RecipeToRecipeCommandTest {
     public static final String RECIPE_ID = "1";
@@ -25,7 +25,7 @@ public class RecipeToRecipeCommandTest {
     public static final String NOTES_ID = "9";
     RecipeToRecipeCommand converter;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         converter = new RecipeToRecipeCommand(
                 new CategoryToCategoryCommand(),

@@ -1,8 +1,5 @@
 package com.mlorenzo.spring5mongorecipeapp.converters;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.mlorenzo.spring5mongorecipeapp.commands.IngredientCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.Ingredient;
 import com.mlorenzo.spring5mongorecipeapp.domain.Recipe;
@@ -10,7 +7,10 @@ import com.mlorenzo.spring5mongorecipeapp.domain.UnitOfMeasure;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class IngredientToIngredientCommandTest {
     public static final Recipe RECIPE = new Recipe();
@@ -21,7 +21,7 @@ public class IngredientToIngredientCommandTest {
 
     IngredientToIngredientCommand converter;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         converter = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
     }

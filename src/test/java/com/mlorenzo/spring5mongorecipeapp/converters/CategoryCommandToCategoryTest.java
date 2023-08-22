@@ -1,19 +1,20 @@
 package com.mlorenzo.spring5mongorecipeapp.converters;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.mlorenzo.spring5mongorecipeapp.commands.CategoryCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.Category;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class CategoryCommandToCategoryTest {
     public static final String ID_VALUE = "1";
     public static final String DESCRIPTION = "description";
+    
     CategoryCommandToCategory conveter;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         conveter = new CategoryCommandToCategory();
     }

@@ -1,7 +1,7 @@
 package com.mlorenzo.spring5mongorecipeapp.controllers;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
@@ -37,7 +37,7 @@ public class IngredientControllerTest {
 
     MockMvc mockMvc;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         controller = new IngredientController(ingredientService, recipeService, unitOfMeasureService);

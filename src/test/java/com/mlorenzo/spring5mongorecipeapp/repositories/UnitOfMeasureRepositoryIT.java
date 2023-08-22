@@ -1,17 +1,20 @@
 package com.mlorenzo.spring5mongorecipeapp.repositories;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mlorenzo.spring5mongorecipeapp.bootstrap.RecipeBootstrap;
 import com.mlorenzo.spring5mongorecipeapp.domain.UnitOfMeasure;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
+@RunWith(SpringRunner.class)
 @DataMongoTest
 public class UnitOfMeasureRepositoryIT {
 
@@ -24,7 +27,7 @@ public class UnitOfMeasureRepositoryIT {
     @Autowired
     RecipeRepository recipeRepository;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
     	recipeRepository.deleteAll();
     	unitOfMeasureRepository.deleteAll();

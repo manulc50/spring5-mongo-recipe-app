@@ -1,7 +1,5 @@
 package com.mlorenzo.spring5mongorecipeapp.controllers;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -13,11 +11,14 @@ import com.mlorenzo.spring5mongorecipeapp.commands.RecipeCommand;
 import com.mlorenzo.spring5mongorecipeapp.services.ImageService;
 import com.mlorenzo.spring5mongorecipeapp.services.RecipeService;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class ImageControllerTest {
 
@@ -31,7 +32,7 @@ public class ImageControllerTest {
 
     MockMvc mockMvc;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         controller = new ImageController(imageService, recipeService);
