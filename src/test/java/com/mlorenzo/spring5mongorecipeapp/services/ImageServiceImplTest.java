@@ -8,13 +8,13 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mlorenzo.spring5mongorecipeapp.domain.Recipe;
 import com.mlorenzo.spring5mongorecipeapp.repositories.RecipeRepository;
-
-import java.util.Optional;
+import com.mlorenzo.spring5mongorecipeapp.domain.Recipe;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+
+import java.util.Optional;
 
 public class ImageServiceImplTest {
 
@@ -34,11 +34,10 @@ public class ImageServiceImplTest {
         //given
         String id = "1";
         MultipartFile multipartFile = new MockMultipartFile("imagefile", "testing.txt", "text/plain",
-                "Spring Framework Guru".getBytes());
+        		"fake image text".getBytes());
         Recipe recipe = new Recipe();
         recipe.setId(id);
-        Optional<Recipe> recipeOptional = Optional.of(recipe);
-        when(recipeRepository.findById(anyString())).thenReturn(recipeOptional);
+        when(recipeRepository.findById(anyString())).thenReturn(Optional.of(recipe));
         ArgumentCaptor<Recipe> argumentCaptor = ArgumentCaptor.forClass(Recipe.class);
         //when
         imageService.saveImageFile(id, multipartFile);

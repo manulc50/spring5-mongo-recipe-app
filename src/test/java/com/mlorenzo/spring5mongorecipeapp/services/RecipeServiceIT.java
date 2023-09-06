@@ -3,21 +3,17 @@ package com.mlorenzo.spring5mongorecipeapp.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.mlorenzo.spring5mongorecipeapp.commands.RecipeCommand;
-import com.mlorenzo.spring5mongorecipeapp.converters.RecipeCommandToRecipe;
 import com.mlorenzo.spring5mongorecipeapp.converters.RecipeToRecipeCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.Recipe;
 import com.mlorenzo.spring5mongorecipeapp.repositories.RecipeRepository;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RecipeServiceIT {
@@ -30,20 +26,16 @@ public class RecipeServiceIT {
     RecipeRepository recipeRepository;
 
     @Autowired
-    RecipeCommandToRecipe recipeCommandToRecipe;
-
-    @Autowired
     RecipeToRecipeCommand recipeToRecipeCommand;
 
-    @Transactional
     @Test
     public void testSaveOfDescription() throws Exception {
         //given
         Iterable<Recipe> recipes = recipeRepository.findAll();
         Recipe testRecipe = recipes.iterator().next();
         RecipeCommand testRecipeCommand = recipeToRecipeCommand.convert(testRecipe);
-        //when
         testRecipeCommand.setDescription(NEW_DESCRIPTION);
+        //when
         RecipeCommand savedRecipeCommand = recipeService.saveRecipeCommand(testRecipeCommand);
         //then
         assertEquals(NEW_DESCRIPTION, savedRecipeCommand.getDescription());

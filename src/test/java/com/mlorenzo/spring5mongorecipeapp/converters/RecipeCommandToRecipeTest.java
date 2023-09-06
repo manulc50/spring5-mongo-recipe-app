@@ -2,7 +2,6 @@ package com.mlorenzo.spring5mongorecipeapp.converters;
 
 import com.mlorenzo.spring5mongorecipeapp.commands.CategoryCommand;
 import com.mlorenzo.spring5mongorecipeapp.commands.IngredientCommand;
-import com.mlorenzo.spring5mongorecipeapp.commands.NotesCommand;
 import com.mlorenzo.spring5mongorecipeapp.commands.RecipeCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.Difficulty;
 import com.mlorenzo.spring5mongorecipeapp.domain.Recipe;
@@ -26,16 +25,14 @@ public class RecipeCommandToRecipeTest {
     public static final String CAT_ID2 = "2";
     public static final String INGRED_ID_1 = "3";
     public static final String INGRED_ID_2 = "4";
-    public static final String NOTES_ID = "4";
+    public static final String NOTES = "My Notes";
 
     RecipeCommandToRecipe converter;
-
 
     @Before
     public void setUp() throws Exception {
         converter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
-                new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),
-                new NotesCommandToNotes());
+                new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()));
     }
 
     @Test
@@ -61,9 +58,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.setServings(SERVINGS);
         recipeCommand.setSource(SOURCE);
         recipeCommand.setUrl(URL);
-        NotesCommand notes = new NotesCommand();
-        notes.setId(NOTES_ID);
-        recipeCommand.setNotes(notes);
+        recipeCommand.setNotes(NOTES);
         CategoryCommand category = new CategoryCommand();
         category.setId(CAT_ID_1);
         CategoryCommand category2 = new CategoryCommand();
@@ -78,6 +73,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.getIngredients().add(ingredient2);
         //when
         Recipe recipe  = converter.convert(recipeCommand);
+        //then
         assertNotNull(recipe);
         assertEquals(RECIPE_ID, recipe.getId());
         assertEquals(COOK_TIME, recipe.getCookTime());
@@ -88,7 +84,7 @@ public class RecipeCommandToRecipeTest {
         assertEquals(SERVINGS, recipe.getServings());
         assertEquals(SOURCE, recipe.getSource());
         assertEquals(URL, recipe.getUrl());
-        assertEquals(NOTES_ID, recipe.getNotes().getId());
+        assertEquals(NOTES, recipe.getNotes());
         assertEquals(2, recipe.getCategories().size());
         assertEquals(2, recipe.getIngredients().size());
     }

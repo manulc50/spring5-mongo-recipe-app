@@ -9,6 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
+import com.mlorenzo.spring5mongorecipeapp.commands.RecipeCommand;
 import com.mlorenzo.spring5mongorecipeapp.domain.Recipe;
 import com.mlorenzo.spring5mongorecipeapp.services.RecipeService;
 
@@ -39,8 +40,11 @@ public class IndexControllerTest {
 
     @Test
     public void testMockMVC() throws Exception {
+    	//given
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        //when
         mockMvc.perform(get("/"))
+        		//then
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
     }
@@ -48,12 +52,14 @@ public class IndexControllerTest {
     @Test
     public void getIndexPage() throws Exception {
         //given
-        Set<Recipe> recipes = new HashSet<>();
-        recipes.add(new Recipe());
-        Recipe recipe = new Recipe();
-        recipe.setId("1");
-        recipes.add(recipe);
-        when(recipeService.getRecipes()).thenReturn(recipes);
+    	RecipeCommand recipeCommand1 = new RecipeCommand();
+		recipeCommand1.setId("1");
+		RecipeCommand recipeCommand2 = new RecipeCommand();
+		recipeCommand2.setId("2");
+		Set<RecipeCommand> returnedRecipeCommandSet = new HashSet<>();
+		returnedRecipeCommandSet.add(recipeCommand1);
+		returnedRecipeCommandSet.add(recipeCommand2);
+        when(recipeService.getRecipes()).thenReturn(returnedRecipeCommandSet);
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
         //when
         String viewName = controller.getIndexPage(model);

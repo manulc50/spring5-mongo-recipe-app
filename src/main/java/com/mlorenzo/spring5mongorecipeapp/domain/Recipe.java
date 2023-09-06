@@ -7,11 +7,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document
+@Document(collection = "recipes")
 public class Recipe {
 
 	@Id
@@ -25,18 +26,10 @@ public class Recipe {
     private String url;
     private String directions;
     private Set<Ingredient> ingredients = new HashSet<>();
-    private Byte[] image;
+    private byte[] image;
     private Difficulty difficulty;
-    private Notes notes;
+    private String notes;
+    
+    @DBRef
     private Set<Category> categories = new HashSet<>();
-
-    public void setNotes(Notes notes) {
-        if (notes != null) 
-            this.notes = notes;
-    }
-
-    public Recipe addIngredient(Ingredient ingredient){
-        this.ingredients.add(ingredient);
-        return this;
-    }
 }

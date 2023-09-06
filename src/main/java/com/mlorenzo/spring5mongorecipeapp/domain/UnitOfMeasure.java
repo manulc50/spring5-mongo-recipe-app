@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Document
+@Document(collection = "unitOfMeasures")
 public class UnitOfMeasure {
 
 	@Id
