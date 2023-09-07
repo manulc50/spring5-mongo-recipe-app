@@ -37,13 +37,13 @@ public class RecipeController {
     @GetMapping("recipe/new")
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
-        return "recipe/recipeform";
+        return "recipe/recipeForm";
     }
 
     @GetMapping("recipe/{id}/update")
     public String updateRecipe(@PathVariable String id, Model model){
         model.addAttribute("recipe", recipeService.findCommandById(id));
-        return "recipe/recipeform";
+        return "recipe/recipeForm";
     }
 
     @PostMapping("recipe")
@@ -51,7 +51,7 @@ public class RecipeController {
         if(bindingResult.hasErrors()) {
         	if(log.isDebugEnabled())
 	            bindingResult.getAllErrors().forEach(objectError -> log.debug(objectError.toString()));
-            return "recipe/recipeform";
+            return "recipe/recipeForm";
         }
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
