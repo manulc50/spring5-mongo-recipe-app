@@ -93,7 +93,7 @@ public class RecipeControllerTest {
                 .param("cookTime", "3000"))
 	        .andExpect(status().isOk())
 	        .andExpect(model().attributeExists("recipe"))
-	        .andExpect(view().name("recipe/recipeform"));
+	        .andExpect(view().name("recipe/recipeForm"));
     }
 
     @Test
@@ -103,7 +103,7 @@ public class RecipeControllerTest {
         when(recipeService.findCommandById(anyString())).thenReturn(command);
         mockMvc.perform(get("/recipe/1/update"))
             .andExpect(status().isOk())
-            .andExpect(view().name("recipe/recipeform"))
+            .andExpect(view().name("recipe/recipeForm"))
             .andExpect(model().attributeExists("recipe"));
     }
 
